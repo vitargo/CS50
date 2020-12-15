@@ -3,21 +3,23 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
- 
+
 int main(int argc, string argv[])
 {
    int key = 0;
    int n = 0;
- 
+
 /*
    if(argc != 2) return 1;
- 
+
    key = atoi (argv[1]);
-  
+
    if(key == 0) return 1;
- 
+
+   blabla bla
+
 */
- 
+
    if (argc == 2)
    {
        n = strlen (argv [1]);
@@ -32,7 +34,7 @@ int main(int argc, string argv[])
              printf ("Usage: ./caesar key\n");
              return 1;
          }
-       
+
        }
    }
    else
@@ -43,7 +45,7 @@ int main(int argc, string argv[])
 //    printf ("%i\n", key);
    string s = get_string ("plaintext: ");
    printf ("ciphertext: ");
-  
+
    for (int k = 0; k < strlen (s); k++)
    {
        if ((s[k] >= 'A' && s[k] <= 'Z') || (s[k] >= 'a' && s[k] <= 'z'))
@@ -55,15 +57,15 @@ int main(int argc, string argv[])
            else
            {
                printf ("%c", s[k] - 26 + key%26);
-           }   
-      
+           }
+
        }
-      
+
        else
        {
            printf ("%c", s[k]);
        }
-      
+
    }
 printf ("\n");
 }
