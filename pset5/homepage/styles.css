@@ -1,0 +1,63 @@
+            address {
+                  display: block;
+                  font-style: italic;
+                  margin-left: 30px;
+            }
+
+            blockquote {
+                  display: block;
+                  margin-top: 1em;
+                  margin-bottom: 1em;
+                  margin-left: 40px;
+                  margin-right: 40px;
+            }
+            .div {
+                background-image: url(mount2.png);
+                background-position: right bottom;
+                background-repeat: repeat-x;
+            }
+            .leftimg  {
+                float: left;
+                margin: 7px 27px 7px 0;
+            }
+            .rightimg  {
+                float: right;
+                margin: 7px 0 7px 7px;
+            }
+            p {
+                margin-top: 10px;
+                margin-bottom: 10px;
+                margin-right: 10px;
+                margin-left: 30px;
+            }
+            h1, h2, h3, h6 {
+                margin-top: 10px;
+                margin-bottom: 10px;
+                margin-right: 10px;
+                margin-left: 30px;
+            }
+            ul li {
+                margin-left: 40px;
+            }
+
+            .button {
+                margin-left:30px;
+                margin-bottom:30px;
+                background-color: #555555;
+                color: white;
+                cursor: pointer;
+            }
+            img {
+                border: 5px solid #c2d6d6;
+                width: 15%;
+                height: auto;
+            }
+
+            .parent1 {
+                margin-left: 30px;
+            }
+            .parent2 {
+                margin-right: 30px;
+            }
+
+
