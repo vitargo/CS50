@@ -3,22 +3,22 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
- 
+
 int shift (char c);
 int main(int argc, string argv[])
 {
   if(argc != 2)
   {
-      printf ("Usage: ./caesar keyword\n");
+      printf ("Usage: ./Vigenere keyword\n");
       return 1;
   }
- 
+
   int n = strlen (argv [1]);
   for (int i = 0; i < n; i ++)
   {
       if (!isalpha (argv[1][i]))
       {
-          printf ("Usage: ./caesar keyword\n");
+          printf ("Usage: ./Vigenere keyword\n");
           return 1;
       }
   }
@@ -39,7 +39,7 @@ int main(int argc, string argv[])
          {
              pointer++;
          }
-        
+
          if (s[k]%32 + key%26 <= 26)
          {
              printf ("%c", s[k] + key%26);
@@ -56,7 +56,7 @@ int main(int argc, string argv[])
  }
  printf ("\n");
 }
-   
+
 int shift (char c)
 {
     int key = 0;
@@ -67,7 +67,7 @@ int shift (char c)
         if (c == alphabet [i])
         {
             key = i;
-           
+
         }
     }
     return key;
