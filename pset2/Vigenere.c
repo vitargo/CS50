@@ -40,13 +40,13 @@ int main(int argc, string argv[])
              pointer++;
          }
 
-         if (s[k]%32 + key%26 <= 26)
+         if (s[k]%32 + key <= 26)
          {
-             printf ("%c", s[k] + key%26);
+             printf ("%c", s[k] + key);
          }
          else
          {
-             printf ("%c", s[k] - 26 + key%26);
+             printf ("%c", s[k] - 26 + key);
          }
      }
      else
