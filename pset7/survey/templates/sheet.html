@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <h1 class="mb-3">Sheet</h1>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">Plant Name</th>
+            <th scope="col">Latin Plant Name</th>
+            <th scope="col">Region</th>
+            <th scope="col">Plant Type</th>
+            <th scope="col">Latitude</th>
+            <th scope="col">Longitude</th>
+            <th scope="col">Researcher's id</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{ data_var|safe }}
+
+        </tbody>
+    </table>
+
+    <script>
+
+        let latregex = /^(-?[1-8]?\d(?:\.\d{1,18})?|90(?:\.0{1,18})?)$/;
+        let lonregex = /^(-?(?:1[0-7]|[1-9])?\d(?:\.\d{1,18})?|180(?:\.0{1,18})?)$/;
+
+        function validateForm(){
+
+            let lat = document.forms["myForm"]["latitude"].value;
+            console.log(lat);
+            let lon = document.forms["myForm"]["longitude"].value;
+            console.log(lon);
+            if (lat == "") {
+                alert("Latitude must be filled out!");
+                return false;
+            }
+            if (lon == "") {
+                alert("Longitude must be filled out!");
+                return false;
+            }
+            var validLat = latregex.test(lat);
+            console.log(validLat)
+            var validLon = lonregex.test(lon);
+            console.log(validLon)
+            if (!validLat) {
+                alert("Latitude must be filled out properly!");
+                return false;
+            }
+            if (!validLon) {
+                alert("Longitude must be filled out properly!");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <h1 class="mb-3">Form</h1>
+
+    <!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
+    <form name="myForm" action="/form" onsubmit="return validateForm()" method="post" >
+
+        <div class="form-group">
+            <label for="plantNameLabel">Plant Name</label><br>
+            <input name ="name" type="text" class="form-control" id="plantNameLabel" maxlength="50" required>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="latinPlantName">Latin Plant Name</label><br>
+            <input name ="latin_name" type="text" class="form-control" id="latinPlantName">
+        </div>
+        <br>
+        <label for="region">Region</label><br>
+        <select id="region" name="region" required>
+            <option disabled selected value>Select region</option>
+            <option value="Asia">Asia</option>
+            <option value="Europe">Europe</option>
+            <option value="Africa">Africa</option>
+            <option value="Oceania">Oceania</option>
+            <option value="Latin America">Latin America</option>
+            <option value="Northern America">Northern America</option>
+        </select>
+        <br>
+        <br>
+        <label>Choose plant type:</label><br>
+        <input type="radio" id="tree" name="plant_type" value="tree">
+        <label for="tree">tree</label><br>
+        <input type="radio" id="bush" name="plant_type" value="bush">
+        <label for="bush">bush</label><br>
+        <input type="radio" id="flower" name="plant_type" value="flower">
+        <label for="flower">flower</label><br>
+        <input type="radio" id="herbaceous" name="plant_type" value="herbaceous">
+        <label for="herbaceous">herbaceous plant</label><br>
+        <br>
+        <div class="form-group">
+            <label for="latitude">Latitude:</label><br>
+            <input name="latitude" type="text" class="form-control" id="latitude">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="longitude">Longitude:</label><br>
+            <input name="longitude" type="text" class="form-control" id="longitude" >
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="id_researcher">Researcher's id:</label><br>
+            <input name = "id_researcher" type="number" class="form-control" id="id_researcher" min="1" required>
+        </div>
+        <br>
+        <input type="checkbox" id="agree" name="agree" value="true">
+        <label for="agree"> I hereby consent to the processing of the personal data</label><br>
+        <br>
+        <!-- http://getbootstrap.com/docs/4.1/components/buttons/ -->
+        <button class="btn btn-primary" type="submit">Submit</button>
+
+    </form>
+
+    <script>
+
+    let latregex = /^(-?[1-8]?\d(?:\.\d{1,18})?|90(?:\.0{1,18})?)$/;
+    let lonregex = /^(-?(?:1[0-7]|[1-9])?\d(?:\.\d{1,18})?|180(?:\.0{1,18})?)$/;
+
+    function validateForm(){
+
+        let lat = document.forms["myForm"]["latitude"].value;
+            console.log(lat);
+            let lon = document.forms["myForm"]["longitude"].value;
+            console.log(lon);
+            if (lat == "") {
+                alert("Latitude must be filled out!");
+                return false;
+            }
+            if (lon == "") {
+                alert("Longitude must be filled out!");
+                return false;
+            }
+            var validLat = latregex.test(lat);
+            console.log(validLat)
+            var validLon = lonregex.test(lon);
+            console.log(validLon)
+            if (!validLat) {
+                alert("Latitude must be filled out properly!");
+                return false;
+            }
+            if (!validLon) {
+                alert("Longitude must be filled out properly!");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+{% endblock %}
