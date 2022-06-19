@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <form name = "myForm" action="/register"  onsubmit="return validateForm();" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="confirmation" placeholder="Confirm password" type="password">
+        </div>
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+    <script>
+        let register = document.querySelector('form');
+        register.addEventListener("submit", function(event){
+            event.preventDefault()
+        });
+        function validateForm() {
+            let nick = document.forms["myForm"]["username"].value;
+            console.log(nick);
+            let url = window.location.href.match(/^https?:\/\/[^#?\/]+/) + "/check?username=" + nick;
+            console.log(url);
+            fetch(url)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    let res = JSON.parse(data);
+                    if (res === false) {
+                        alert("Username is not available");
+                    } else {
+                        register.submit();
+                    }
+                });
+        }
+
+    </script>
+{% endblock %}

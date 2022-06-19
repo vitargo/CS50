@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Symbol</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Price</th>
+            <th scope="col">Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{ data|safe }}
+        </tbody>
+    </table>
+{% endblock %}

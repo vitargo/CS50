@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Change password
+{% endblock %}
+
+{% block main %}
+    <form name = "myForm" action="/changepass"  onsubmit="return validateForm();" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="new_password" placeholder="New password" type="password">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="confirm_new_password" placeholder="Confirm new password" type="password">
+        </div>
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+    <script>
+        let register = document.querySelector('form');
+        register.addEventListener("submit", function(event){
+            event.preventDefault()
+        });
+        function validateForm() {
+            let nick = document.forms["myForm"]["username"].value;
+            console.log(nick);
+            let password = document.forms["myForm"]["password"].value;
+            console.log(password);
+            let url = window.location.href.match(/^https?:\/\/[^#?\/]+/) + "/checkcredo";
+            console.log(url);
+            fetch(url, {method:'GET',
+                headers: {'Authorization': 'Basic ' + btoa(nick + ":" + password)}})
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    let res = JSON.parse(data);
+                    if (res === false) {
+                        alert("Please, enter existed user and/or password!");
+                    } else {
+                        register.submit();
+                    }
+                });
+        }
+
+    </script>
+{% endblock %}

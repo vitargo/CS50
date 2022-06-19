@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Registration
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Symbol</th>
+            <th scope="col">Name</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Price</th>
+            <th scope="col">Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{ data|safe }}
+        </tbody>
+        <tfoot>
+        <tr>
+            <td class="myfootstyle" colspan="4" style = "color: chocolate;">Cash</td>
+            <td>
+                {{ cash }}
+            </td>
+        </tr>
+        <tr>
+            <td class="myfootstyle" colspan="4" style = "color: green;">Total</td>
+            <td>
+                {{ total }}
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+{% endblock %}
